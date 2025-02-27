@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+
+const Value1 string = "sdhfbksj" // Capital so this is public value can be accessed from other module too in go we don't write export public we just do it making var name starting with Capital Letter
+
 func main(){
 	
 	var userName string = "Mehbub";
@@ -23,5 +26,28 @@ func main(){
 
 
 	//defaults and aliases
+
+	var anotherVar  int // by default 0
+	fmt.Println(anotherVar)
+	fmt.Printf("smallFloat is of type : %T \n",anotherVar);
+
+	
+	// implicit type
+
+	var site = "code.org"  // lexer assigns string type based on the type of the value and later on it will only be allowed as string 
+	fmt.Println(site)
+	// site = 3 will give an error
+
+	
+	// No var style
+	//Inside a method this is allowed only // not globally used
+	numberOne := 3000 // lexer comes again 
+	fmt.Println(numberOne)
+
+
+	
+	fmt.Println(Value1)
+
+
 
 }
