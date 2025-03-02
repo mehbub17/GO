@@ -50,5 +50,14 @@ func main(){
 	fmt.Println(highScore)
 	fmt.Println(sort.IntsAreSorted(highScore))//slice is sorted
 
+	// Removing values from slices based on index
+
+	var courses = []string {"react","js","go","cpp","java"}
+	fmt.Println(courses)
+	
+	var index int = 2
+	courses = append(courses[:index], courses[index+1:]...); // slice expect individual element hence ... for spreading
+
+	fmt.Println(courses)
 
 }
