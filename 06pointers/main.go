@@ -16,5 +16,10 @@ func main()  {
 	var ptr = &myNum
 	fmt.Println("value of pointer is ",ptr) //address
 	fmt.Println("value of pointer is ",*ptr)//value
+
+
+	*ptr = *ptr *2
+
+	fmt.Println("new pointer value is ",myNum)
 	
 }
