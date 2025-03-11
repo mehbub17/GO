@@ -6,11 +6,11 @@ import (
 )
 
 type course struct {
-	Name     string
+	Name     string `json:"coursename"` // renames the Name parameter to coursename for the client consuming the api
 	Price    int
 	platform string
-	Password string
-	Tags     []string
+	Password string `json:"-"` // wont show password to the user consuming the api
+	Tags     []string `json:"tags,omitempty"`//if value null then do show it
 }
 
 func main() {
@@ -25,7 +25,7 @@ func EncodeJson() {
 
 		{"reactjs Bootcamp", 200, "code.in", "akjsf", []string{"sfs", "rjs"}},
 		{"Mern Bootcamp", 300, "coded.in", "akjsfsfs", []string{"sfffffs", "rrrrrjs"}},
-		{"C++ Bootcamp", 400, "codedd.in", "asfskjsf", []string{"sfffs", "rfffjs"}},
+		{"C++ Bootcamp", 400, "codedd.in", "asfskjsf", []string{}},
 	}
 
 	// packaging the data as json data
