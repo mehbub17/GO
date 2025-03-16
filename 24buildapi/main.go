@@ -112,3 +112,34 @@ func createOneCourse(w http.ResponseWriter, r *http.Request) {
 	return
 
 }
+
+func updateOneCourse(w http.ResponseWriter, r *http.Request) {
+
+	fmt.Println("Get one courses")
+	w.Header().Set("Content-Type", "application/json")
+
+	// grab the id from request
+
+	params := mux.Vars(r) // params is set of key-val pairs using mux we can just extract them from request
+
+	// loop the course and find matching id,remove add with new again return the response
+	for index, course := range courses { // we are not in a database hence we are just looping around to search it in slice
+
+		if course.CourseId == params["id"] { // params is k-v pair
+
+			courses = append(courses[:index],courses[index+1:]... )
+			var course Course
+			_ = json.NewDecoder(r.Body).Decode(&course) // decoding the json
+			course.CourseId = params["id"]
+			courses = append(courses, course)
+			json.NewEncoder(w).Encode(course) // okay updated
+			return 
+
+		}
+	}
+
+	// send a response when id not found in data base
+
+	json.NewEncoder(w).Encode("Please enter a valid id for update")
+	return
+}
